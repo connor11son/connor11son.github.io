@@ -9,7 +9,13 @@
             body { 
                 font-family: 'Roboto Slab', serif;
             }
-    </style>
+        </style>
+
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/knn-classifier"></script>
+
   </head>
   <body style = "background-color: rgb(8, 5, 20);">
     <h1 style = "text-align: center; font-size: xx-large; color: #0ff; font-family: Roboto, serif;">Connor Levenson</h1>
@@ -28,7 +34,17 @@
     </p>
     <img src="me.png" alt = "Me" style="width: 30%;">
     <h2 style = "text-align: left; font-size: 2em; color: #fb0; font-family: 'Roboto Slab', serif; border-bottom: solid 1px;">Projects </h2>
-    TBD
+
+        <div id="console"></div>
+        <!-- Add an image that we will use to test -->
+        <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
+        <button id="class-a">Add A</button>
+        <button id="class-b">Add B</button>
+        <button id="class-c">Add C</button>
+        <!-- Load index.js after the content of the page -->
+        <script src="index.js"></script>
+
+
     <h2 style = "text-align: left; font-size: 2em; color: #fb0; font-family: 'Roboto Slab', serif; border-bottom: solid 1px;">Coursework </h2>
     
     <p style="text-align:left; color: #0ff; font-size: 1.5em; font-family: 'Roboto Slab', serif;">
