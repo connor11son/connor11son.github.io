@@ -9,13 +9,13 @@ async function loadMobilenet() {
   const mobile_net_url = 'https://connor11son.github.io/model.json';
   const mobilenet = await tf.loadLayersModel(mobile_net_url);
 
-  const layer = mobilenet.getLayer('Conv_1');
+  const layer = mobilenet.getLayer('block_16_project');
   return tf.model({inputs: mobilenet.inputs, outputs: layer.output});
 }
 
 async function train() {
   dataset.ys = null;
-  dataset.encodeLabels(4);
+  dataset.encodeLabels(3);
   model = tf.sequential({
     layers: [
       tf.layers.flatten({inputShape: mobilenet.outputs[0].shape.slice(1)}),
@@ -23,14 +23,14 @@ async function train() {
       tf.layers.dense({ units: 512, activation: 'relu'}),
       tf.layers.dense({ units: 256, activation: 'relu'}),
       tf.layers.dense({ units: 100, activation: 'relu'}),
-      tf.layers.dense({ units: 4, activation: 'softmax'})
+      tf.layers.dense({ units: 3, activation: 'softmax'})
     ]
   });
   const optimizer = tf.train.adam(0.0001);
   model.compile({optimizer: optimizer, loss: 'categoricalCrossentropy'});
   let loss = 0;
   model.fit(dataset.xs, dataset.ys, {
-    epochs: 40,
+    epochs: 20,
     callbacks: {
       onBatchEnd: async (batch, logs) => {
         loss = logs.loss.toFixed(5);
