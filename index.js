@@ -6,7 +6,7 @@ var happySamples=0, sadSamples=0, angrySamples=0;
 let isPredicting = false;
 
 async function loadMobilenet() {
-  const mobile_net_url = 'https://storage.cloud.google.com/mobilenet_facial_model/model.json';
+  const mobile_net_url = 'https://connor11son.github.io/model.json';
   const mobilenet = await tf.loadLayersModel(mobile_net_url);
 
   const layer = mobilenet.getLayer('Conv_1');
