@@ -6,10 +6,10 @@ var happySamples=0, neutralSamples=0, angrySamples=0;
 let isPredicting = false;
 
 async function loadMobilenet() {
-  const mobile_net_url = 'https://connor11son.github.io/model.json';
+  const mobile_net_url = 'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json';
   const mobilenet = await tf.loadLayersModel(mobile_net_url);
 
-  const layer = mobilenet.getLayer('block_16_project');
+  const layer = mobilenet.getLayer('conv_pw_13_relu');
   return tf.model({inputs: mobilenet.inputs, outputs: layer.output});
 }
 
