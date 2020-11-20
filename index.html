@@ -40,7 +40,9 @@
     Instructions: Allow access to your webcam. Add ~50 samples for each expression to the dataset. 
     To add samples, simply make the desired expression with your face in the view of your webcam
     and click on the corresponding expression's button. Once you have added enough examples, train the network.
-    After the network is done training (~10 seconds), hit the button to start predicting.</p>
+    After the network is done training (~10 seconds), hit the button to start predicting. <br>
+    Also note that, due to the limited nature of training in the browser, we can only retrain the output (fully-connected) layers. Therefore, the 
+    model will not be invariant to translation, so make your training examples (spatially) diverse!</p>
     <div>
 		<div>
 			<video style="border:#fb0;" autoplay playsinline muted id="wc" width="224" height="224"></video>
