@@ -2,7 +2,7 @@ let mobilenet;
 let model;
 const webcam = new Webcam(document.getElementById('wc'));
 const dataset = new RPSDataset();
-var happySamples=0, sadSamples=0, angrySamples=0;
+var happySamples=0, neutralSamples=0, angrySamples=0;
 let isPredicting = false;
 
 async function loadMobilenet() {
@@ -48,8 +48,8 @@ function handleButton(elem){
 			document.getElementById("happysamples").innerText = "Happy samples:" + happySamples;
 			break;
 		case "1":
-			sadSamples++;
-			document.getElementById("sadsamples").innerText = "Sad samples:" + sadSamples;
+			neutralSamples++;
+			document.getElementById("neutralsamples").innerText = "Neutral samples:" + neutralSamples;
 			break;
 		case "2":
 			angrySamples++;
@@ -74,13 +74,13 @@ async function predict() {
     var predictionText = "";
     switch(classId){
 		case 0:
-			predictionText = "You are happy.";
+			predictionText = "You are pretty happy.";
 			break;
 		case 1:
-			predictionText = "You are sad.";
+			predictionText = "You are feeling neutral.";
 			break;
 		case 2:
-			predictionText = "You are angry.";
+			predictionText = "You are a little angry.";
 			break;
 	}
 	document.getElementById("prediction").innerText = predictionText;
